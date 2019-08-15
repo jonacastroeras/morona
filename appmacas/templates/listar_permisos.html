@@ -1,0 +1,77 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block nav %}
+	<ul class="nav nav-tabs">
+	  <li class="nav-item">
+	    <a class="nav-link" href="{% url 'index' %}">Nuevo Permiso</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link active" href="{% url 'listar_permisos' %}">Listar Permisos</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="{% url 'nuevo_empleado' %}">Nuevo Empleado</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+	  </li>
+	</ul>
+	{% endblock %}
+{% block contenido %}
+<div class="mt-5">
+	<table class="table" id="myTable">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Empleado</th>
+				<th scope="col">Vacaciones</th>
+				<th scope="col">Enfermedad</th>
+				<th scope="col">Compensación</th>
+				<th scope="col">Calamidad</th>
+				<th scope="col">Certificado</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for c in diccionario %}
+			<tr>
+				<th scope="row">1</th>
+				<td>{{c.empleado}} {{c.id_tipoausencias}} </td>
+
+				{%if c.id_tipoausencias == 1%}			
+					<td>{{c.id_tipoausencias}}</td>
+				{%else%}
+					<td>0</td>
+				{% endif %}
+				{%if c.id_tipoausencias is '2'%}			
+					<td>{{c.id_tipoausencias}}</td>
+				{%else%}
+					<td>0</td>
+				{% endif %}
+				{%if c.id_tipoausencias is 3%}			
+					<td>{{c.id_tipoausencias}}</td>
+				{%else%}
+					<td>0</td>
+				{% endif %}
+				{%if c.id_tipoausencias is 4%}			
+					<td>{{c.id_tipoausencias}}</td>
+				{%else%}
+					<td>0</td>
+				{% endif %}
+				{%if c.id_tipoausencias is 5%}			
+					<td>{{c.id_tipoausencias}}</td>
+				{%else%}
+					<td>0</td>
+				{% endif %}
+			</tr>			
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{%static 'datatables/jquery.dataTables.min.js' %}"></script>
+ <script>
+  $(document).ready(function () {
+  $('#myTable').DataTable();
+  });
+  </script>
+{%endblock%}
