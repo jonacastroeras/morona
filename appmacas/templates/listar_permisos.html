@@ -11,6 +11,9 @@
 	  <li class="nav-item">
 	    <a class="nav-link" href="{% url 'nuevo_empleado' %}">Nuevo Empleado</a>
 	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="{% url 'listar_empleado' %}">Listar Empleado</a>
+	  </li>
 	  
 	</ul>
 	{% endblock %}
@@ -31,8 +34,8 @@
 		<tbody>
 			{% for c in diccionario %}
 			<tr>
-				<th scope="row">1</th>
-				<td>{{c.empleado}} {{c.id_tipoausencias}} </td>
+				<th scope="row">{{forloop.counter}}</th>
+				<td>{{c.empleado}} </td>
 
 				{%if c.id_tipoausencias == '1'%}			
 					<td>{{c.contador}}</td>

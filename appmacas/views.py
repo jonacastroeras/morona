@@ -68,9 +68,35 @@ def nuevo_empleado(request):
 		formulario = Empleado_Form(request.POST)
 		if formulario.is_valid():
 			formulario.save()
+			return redirect('/listar_empleado')
 	else:
 		formulario = Empleado_Form()
 		ctx = {'formulario':formulario}
 		return render(request, 'nuevo_empleado.html', ctx)
 	ctx = {}
 	return render(request, 'nuevo_empleado.html', ctx)
+
+def modificar_empleado(request, ide):
+
+	# formulario = Permisos()
+	instance = Empleados.objects.get(id_empleados = ide)
+	if request.method == 'POST' and 'btn_guardar' in request.POST:
+		# emp = Empleados(request.POST,request.FILES,instance=instance)
+		formulario = Empleado_Form(request.POST, instance = instance)
+		if formulario.is_valid():
+			formulario.save()
+			return redirect('/listar_empleado')
+	else:
+		formulario = Empleado_Form(instance = instance)
+		ctx = {'formulario':formulario}
+		return render(request, 'nuevo_empleado.html', ctx)
+	ctx = {}
+	return render(request, 'nuevo_empleado.html', ctx)
+
+
+def listar_empleado(request):
+	empleados = Empleados.objects.all()
+	# formulario = Permisos()
+	
+	ctx = {'empleados':empleados}
+	return render(request, 'listar_empleado.html', ctx)

@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block nav %}
+	<ul class="nav nav-tabs">
+	  <li class="nav-item">
+	    <a class="nav-link" href="{% url 'index' %}">Nuevo Permiso</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="{% url 'listar_permisos' %}">Listar Permisos</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="{% url 'nuevo_empleado' %}">Nuevo Empleado</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link active" href="{% url 'listar_empleado' %}">Listar Empleado</a>
+	  </li>
+	</ul>
+	{% endblock %}
+{% block contenido %}
+<div class="mt-5">
+	<table class="table" id="myTable">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Empleado</th>
+				<th scope="col">Cédula</th>
+				<th scope="col">Acciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for c in empleados %}
+			<tr>
+				<th scope="row">{{forloop.counter}}</th>
+				<th scope="row">{{c.nombre_empleado}}</th>
+				<th scope="row">{{c.cedula_empleado}}</th>
+				<th scope="row"><a class="btn btn-success" href="{% url 'modificar_empleado' c.pk%}">Modificar</a></th>
+				
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{%static 'datatables/jquery.dataTables.min.js' %}"></script>
+ <script>
+  $(document).ready(function () {
+  $('#myTable').DataTable();
+  });
+  </script>
+{%endblock%}
