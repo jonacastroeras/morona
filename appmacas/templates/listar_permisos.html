@@ -3,10 +3,10 @@
 {% block nav %}
 	<ul class="nav nav-tabs">
 	  <li class="nav-item">
-	    <a class="nav-link" href="{% url 'index' %}">Nuevo Perm==o</a>
+	    <a class="nav-link" href="{% url 'index' %}">Nuevo Permiso</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link active" href="{% url 'l==tar_perm==os' %}">L==tar Perm==os</a>
+	    <a class="nav-link active" href="{% url 'listar_permisos' %}">Listar Permisos</a>
 	  </li>
 	  <li class="nav-item">
 	    <a class="nav-link" href="{% url 'nuevo_empleado' %}">Nuevo Empleado</a>
@@ -35,27 +35,27 @@
 				<td>{{c.empleado}} {{c.id_tipoausencias}} </td>
 
 				{%if c.id_tipoausencias == '1'%}			
-					<td>{{c.id_tipoausencias}}</td>
+					<td>{{c.contador}}</td>
 				{%else%}
 					<td>0</td>
 				{% endif %}
 				{%if c.id_tipoausencias == '2'%}			
-					<td>{{c.id_tipoausencias}}</td>
+					<td>{{c.contador}}</td>
 				{%else%}
 					<td>0</td>
 				{% endif %}
 				{%if c.id_tipoausencias == '3'%}			
-					<td>{{c.id_tipoausencias}}</td>
+					<td>{{c.contador}}</td>
 				{%else%}
 					<td>0</td>
 				{% endif %}
 				{%if c.id_tipoausencias == '4'%}			
-					<td>{{c.id_tipoausencias}}</td>
+					<td>{{c.contador}}</td>
 				{%else%}
 					<td>0</td>
 				{% endif %}
 				{%if c.id_tipoausencias == '5'%}			
-					<td>{{c.id_tipoausencias}}</td>
+					<td>{{c.contador}}</td>
 				{%else%}
 					<td>0</td>
 				{% endif %}
