@@ -54,7 +54,7 @@ def listar_permisos(request):
 			for d in permisos:
 				if c.id_tipoausencias.nombre == d.id_tipoausencias.nombre:
 					contador = contador + 1
-			diccionario.append({'empleado': c.id_empleados.nombre_empleado,'nombre_columna': c.id_tipoausencias.nombre, 'contador':contador, 'id_tipoausencias':c.id_tipoausencias})
+			diccionario.append({'empleado': c.id_empleados.nombre_empleado,'nombre_columna': c.id_tipoausencias.nombre, 'contador':contador, 'id_tipoausencias':str(c.id_tipoausencias)})
 		contador = 0
 	
 	ctx = {'permisos' : permisos, 'diccionario':diccionario}
